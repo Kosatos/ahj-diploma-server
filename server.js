@@ -50,6 +50,7 @@ wss.on('connection', (ws) => {
 				  loadArr = messages.slice(loadBegin, loadEnd);
 				  loadBegin -= 10;
 				  loadEnd -= 10;
+				  console.log();
 				  clients.clientID.send(
 					JSON.stringify({
 						lazyload: true,
