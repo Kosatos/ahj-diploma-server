@@ -57,6 +57,15 @@ wss.on('connection', (ws) => {
 						messages: loadArr.reverse(),
 					})
 				  );
+				  if (messageIsPinned) {
+					const pinnedMes = messages.find((mes) => mes.pinned);
+					clients.clientID.send(
+						JSON.stringify({
+							pinMessage: true,
+							message: pinnedMes,
+						})
+					);
+				}
 			} else {
 				allLoaded = true;
 				messages.forEach((mes) => {
